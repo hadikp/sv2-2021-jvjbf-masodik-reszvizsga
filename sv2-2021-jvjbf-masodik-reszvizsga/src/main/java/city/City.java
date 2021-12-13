@@ -15,7 +15,15 @@ public class City {
     }
 
     public void addBuilding(Building building) {
-        buildings.add(building);
+        long sum = 0;
+        for(int i = 0; i < buildings.size();i++){
+            sum += buildings.get(i).getArea();
+        }
+        if(sum+building.getArea()<=getFullArea()){
+            buildings.add(building);
+        } else {
+            throw new IllegalArgumentException("City can't be larger than 500");
+        }
     }
 
     public Building findHighestBuilding() {
