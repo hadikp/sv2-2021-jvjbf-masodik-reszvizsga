@@ -3,11 +3,11 @@ package filemanipulation;
 public class Human {
 
     private String name;
-    private String IdentityNumber;
+    private String identityNumber;
 
     public Human(String name, String identityNumber) {
         this.name = name;
-        IdentityNumber = identityNumber;
+        this.identityNumber = identityNumber;
     }
 
     public String getName() {
@@ -15,7 +15,14 @@ public class Human {
     }
 
     public String getIdentityNumber() {
-        return IdentityNumber;
+        return identityNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Human{" +
+                "name='" + name + '\'' +
+                ", identityNumber='" + identityNumber + '\'' +
+                '}';
+    }
 }

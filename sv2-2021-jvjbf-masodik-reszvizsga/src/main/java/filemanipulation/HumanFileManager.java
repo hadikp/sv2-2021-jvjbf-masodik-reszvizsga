@@ -12,7 +12,7 @@ public class HumanFileManager {
     private List<Human> humans = new ArrayList<>();
 
     public void readHumansFromFile(Path path) {
-        List<String> humansL = new ArrayList<>();
+        List<String> humansL = new ArrayList<>(); //nem kell
         try {
             humansL = Files.readAllLines(path);
         }
@@ -22,7 +22,7 @@ public class HumanFileManager {
         makeHuman(humansL);
     }
 
-    public void makeHuman(List<String> humansL) {
+    private void makeHuman(List<String> humansL) {
         for (String st: humansL) {
             String[] humansLSplit = st.split(";");
             humans.add(new Human(humansLSplit[0], humansLSplit[1]));
@@ -33,7 +33,7 @@ public class HumanFileManager {
         List<String> man = new ArrayList<>();
         for (Human h: humans) {
             if (h.getIdentityNumber().startsWith("1") || h.getIdentityNumber().startsWith("3")) {
-                String mansL = String.format("%s;%s", h.getName(), h.getIdentityNumber());
+                String mansL = String.format("%s;%s", h.getName(), h.getIdentityNumber()); //h.toString()
                 man.add(mansL);
             }
         }
@@ -47,6 +47,6 @@ public class HumanFileManager {
 
 
     public List<Human> getHumans() {
-        return humans;
+        return new ArrayList<>(humans);
     }
 }

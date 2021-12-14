@@ -7,9 +7,9 @@ public class Office extends Building {
 
     public Office (int area, int levels, Address address, String company, int numberOfTablesPerLevel) {
         super(area, levels, address);
-        /*if (getFullArea() >= (numberOfTablesPerLevel * 2)){
+        if (area / numberOfTablesPerLevel < 2 || area / numberOfTablesPerLevel > 5){
             throw new IllegalArgumentException("Too many tables!");
-        }*/
+        }
         this.company = company;
         this.numberOfTablesPerLevel = numberOfTablesPerLevel;
     }

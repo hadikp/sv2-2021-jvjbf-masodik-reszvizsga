@@ -6,12 +6,12 @@ import java.util.List;
 public class City {
 
     private String name;
-    private long FullArea;
+    private long fullArea;
     private List<Building> buildings = new ArrayList<>();
 
     public City(String name, long fullArea) {
         this.name = name;
-        FullArea = fullArea;
+        this.fullArea = fullArea;
     }
 
     public void addBuilding(Building building) {
@@ -62,10 +62,10 @@ public class City {
     }
 
     public long getFullArea() {
-        return FullArea;
+        return fullArea;
     }
 
     public List<Building> getBuildings() {
-        return buildings;
+        return new ArrayList<>(buildings);
     }
 }
