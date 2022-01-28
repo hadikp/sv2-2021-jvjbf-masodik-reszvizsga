@@ -1,7 +1,9 @@
 package city;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class City {
 
@@ -26,7 +28,7 @@ public class City {
         }
     }
 
-    public Building findHighestBuilding() {
+    /*public Building findHighestBuilding() {
         int max = 0;
         int myI = 0;
         for (int i = 0; i < buildings.size(); i++) {
@@ -36,9 +38,13 @@ public class City {
             }
         }
         return buildings.get(myI);
+    }*/
+
+    public Building findHighestBuilding() {
+        return buildings.stream().max(Comparator.comparing(Building::getLevels)).orElseThrow( () -> new IllegalArgumentException("Üres Stream!"));
     }
 
-    public List<Building> findBuildingsByStreet(String street){
+    /*public List<Building> findBuildingsByStreet(String street){
         List<Building> result = new ArrayList<>();
         for(int i = 0; i < buildings.size(); i++){
             if(buildings.get(i).getAddress().getStreet().equals(street)){
@@ -46,15 +52,23 @@ public class City {
             }
         }
         return result;
+    }*/
+
+    public List<Building> findBuildingsByStreet(String street) {
+        return buildings.stream().filter(o -> o.getAddress().getStreet().equals(street)).collect(Collectors.toList());
     }
 
-    boolean isThereBuildingWithMorePeopleThan(int numberOfPeople){
+    /*boolean isThereBuildingWithMorePeopleThan(int numberOfPeople){
         for(int i = 0; i < buildings.size(); i++){
             if(buildings.get(i).calculateNumberOfPeopleCanFit() > numberOfPeople){
                 return true;
             }
         }
         return false;
+    }*/
+
+    boolean isThereBuildingWithMorePeopleThan(int numberOfPeople) {
+        return buildings.stream().anyMatch(o -> o.calculateNumberOfPeopleCanFit() > numberOfPeople);
     }
 
     public String getName() {
